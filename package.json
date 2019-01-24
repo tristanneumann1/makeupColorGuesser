@@ -1,0 +1,22 @@
+{
+  "name": "makeupcolorguesser",
+  "version": "1.0.0",
+  "description": "Guess the color",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tristanneumann1/makeupColorGuesser.git"
+  },
+  "author": "Tristan Neumann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tristanneumann1/makeupColorGuesser/issues"
+  },
+  "homepage": "https://github.com/tristanneumann1/makeupColorGuesser#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
