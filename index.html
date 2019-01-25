@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
   <title>Makeup Color Guesser</title>
 </head>
 <body>
+  <h1>Guess The color of: <span id="color-name"></span></h1>
+  <div>
+    <button id="color1" class="button"></button>
+    <button id="color2" class="button"></button>
+  </div>
+  <div>
+    <h2>Score: </h2>
+    <ul>
+      <li>Wins: <span class='wins'></span></li>
+      <li>Losses: <span class='losses'></span></li>
+    </ul>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="colors.js"></script>
   <script src="javascript.js"></script>
 </body>
 </html>
