@@ -3,6 +3,7 @@ const $color1 = $('#color1');
 const $color2 = $('#color2');
 let wins = 0;
 let losses = 0;
+let correctColor;
 
 function start() {
   wins = 0;
@@ -12,22 +13,25 @@ function start() {
 }
 
 function newColor() {
+  $color1.text('');
+  $color2.text('');
   let i = Math.floor(Math.random() * colors.length);
   let j = Math.floor(Math.random() * colors.length);
   while(j === i) {
     j = Math.floor(Math.random() * colors.length)
   }
-  $colorName.text(colors[i].colour_name); 
+  correctColor = colors[i].colour_name;
+  $colorName.text(correctColor); 
   if(Math.random() > 0.5) {
     $color1.css('backgroundColor', colors[i].hex_value);
-    $color1.attr('correct', 1);
+    $color1.attr('name', colors[i].colour_name);
     $color2.css('backgroundColor', colors[j].hex_value);
-    $color2.attr('correct', 0);
+    $color2.attr('name', colors[j].colour_name);
   } else {
     $color2.css('backgroundColor', colors[i].hex_value);
-    $color2.attr('correct', 1);
+    $color2.attr('name', colors[i].colour_name);
     $color1.css('backgroundColor', colors[j].hex_value);
-    $color1.attr('correct', 0);
+    $color1.attr('name', colors[j].colour_name);
   }
 }
 
@@ -36,14 +40,25 @@ function updateScore() {
   $('.losses').text(losses);
 }
 
+function displaySollution() {
+  $color1.text($color1.attr('name'));
+  $color2.text($color2.attr('name'));
+  return new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  })
+}
+
 function selectColor(e) {
-  if (+$(this).attr('correct')) {
+  if ($(this).attr('name') === correctColor) {
     wins++;
   } else {
     losses++;
   }
-  updateScore();
-  newColor();
+  displaySollution().then( () => {
+      updateScore();
+      newColor();
+    }
+  )
 }
 
 $color1.on('click', selectColor);
