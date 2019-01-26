@@ -7,15 +7,16 @@ let wins = 0;
 let losses = 0;
 let correctColor;
 let inClick = false;
+const ref = database.ref('colors');
 
-function start() {
+function start(colors) {
   wins = 0;
   losses= 0;
   updateScore();
-  newColor();
+  newColor(colors);
 }
 
-function newColor() {
+function newColor(colors) {
   $color1Text.text('');
   $color2Text.text('');
   let i = Math.floor(Math.random() * colors.length);
@@ -51,27 +52,32 @@ function displaySollution() {
   })
 }
 
-function selectColor(e) {
+function selectColor(e, colors) {
   if(inClick) {
     return;
   }
   inClick = true;
-  if ($(this).attr('name') === correctColor) {
+  if ($(e.target).attr('name') === correctColor) {
     wins++;
   } else {
     losses++;
   }
   displaySollution().then( () => {
       updateScore();
-      newColor();
+      newColor(colors);
       inClick = false;
     }
   )
 }
 
-$color1.on('click', selectColor);
-$color2.on('click', selectColor);
 
-$(document).ready(function($) {
-  start();
+$(document).ready(function() {
+  ref.on('value', function(colorsData) {
+    const colors = Object.values(colorsData.val());
+    $color1.on('click', (e) => selectColor(e, colors));
+    $color2.on('click', (e) => selectColor(e, colors));
+    start(colors);
+  })
 });
+
+// boosch nudus

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tristanneumann1/makeupColorGuesser#readme",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0"
   }
 }

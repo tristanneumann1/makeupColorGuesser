@@ -4,6 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Firebase App is always required and must be first -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-app.js"></script>
+  
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-messaging.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase-functions.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCRg7rUnhDjPBhG_F4l7hPlIk4YLg7Vldc",
+      authDomain: "firstbase-ebcde.firebaseapp.com",
+      databaseURL: "https://firstbase-ebcde.firebaseio.com",
+      projectId: "firstbase-ebcde",
+      storageBucket: "firstbase-ebcde.appspot.com",
+      messagingSenderId: "342648035609"
+    };
+    var defaultApp = firebase.initializeApp(config);
+    var database = firebase.database();
+  </script>
+  <!-- <script src="seedColors.bundle.js"></script> -->
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|PT+Sans+Caption|Playfair+Display" rel="stylesheet">
   <title>Makeup Color Guesser</title>
@@ -22,7 +45,6 @@
     <div id="color2" class="button"><span id="text-color2" class="color-option"></span></div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="colors.js"></script>
   <script src="javascript.js"></script>
 </body>
 </html>
