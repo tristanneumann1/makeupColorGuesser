@@ -27,14 +27,14 @@ function newColor() {
   $colorName.text(correctColor); 
   if(Math.random() > 0.5) {
     $color1.css('backgroundColor', colors[i].hex_value);
-    $color1Text.attr('name', colors[i].colour_name);
+    $color1.attr('name', colors[i].colour_name);
     $color2.css('backgroundColor', colors[j].hex_value);
-    $color2Text.attr('name', colors[j].colour_name);
+    $color2.attr('name', colors[j].colour_name);
   } else {
     $color2.css('backgroundColor', colors[i].hex_value);
-    $color2Text.attr('name', colors[i].colour_name);
+    $color2.attr('name', colors[i].colour_name);
     $color1.css('backgroundColor', colors[j].hex_value);
-    $color1Text.attr('name', colors[j].colour_name);
+    $color1.attr('name', colors[j].colour_name);
   }
 }
 
@@ -44,8 +44,8 @@ function updateScore() {
 }
 
 function displaySollution() {
-  $color1Text.text($color1Text.attr('name'));
-  $color2Text.text($color2Text.attr('name'));
+  $color1Text.text($color1.attr('name'));
+  $color2Text.text($color2.attr('name'));
   return new Promise((resolve) => {
     setTimeout(resolve, 2000);
   })
