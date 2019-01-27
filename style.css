@@ -42,12 +42,12 @@ h1 {
   border-radius: 100%;
   justify-content: center;
   align-items: center;
-  font-size: 35px;
+  /* font-size: 35px; */
 }
 
 .color-option {
   position: relative;
-  font-size: 3vw;
+  font-size: 4vw;
   top: -1em;
   height: 0;
 }
