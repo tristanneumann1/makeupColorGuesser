@@ -32,9 +32,13 @@
   <title>Makeup Color Guesser</title>
 </head>
 <body>
-  <h1>Guess the color of: <span id="color-name"></span></h1>
+  <h1>
+    <span class="in-game"> Guess the color of: <span id="color-name"></span> </span>
+    <span id="end-game" style='display: none;'> Game Over <br><br> <a>Restart</a></span>
+  </h1>
   <div id="score">
     <h2>Score: </h2>
+    <h3 class="in-game"></h3>
     <ul>
       <li>Wins: <span class='wins'></span></li>
       <li>Losses: <span class='losses'></span></li>

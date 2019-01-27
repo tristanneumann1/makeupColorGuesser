@@ -1,3 +1,8 @@
+const $buttons = $('#buttons');
+const $endGame = $('#end-game');
+const $inGame = $('.in-game');
+const $remaining = $('h3.in-game');
+const $restart = $('#end-game a');
 const $colorName = $('#color-name');
 const $color1 = $('#color1');
 const $color1Text = $('#text-color1');
@@ -7,6 +12,7 @@ let wins = 0;
 let losses = 0;
 let correctColor;
 let inClick = false;
+let playing = true;
 const ref = database.ref('colors');
 
 function start(colors) {
@@ -42,6 +48,7 @@ function newColor(colors) {
 function updateScore() {
   $('.wins').text(wins);
   $('.losses').text(losses);
+  $remaining.text(wins + losses + '/10');
 }
 
 function displaySollution() {
@@ -64,20 +71,38 @@ function selectColor(e, colors) {
   }
   displaySollution().then( () => {
       updateScore();
-      newColor(colors);
-      inClick = false;
+      if(wins + losses < 10) {
+        newColor(colors);
+        inClick = false;
+      } else {
+        inClick = false;
+        toggleEndGame(colors);
+      }
     }
   )
 }
 
+function toggleEndGame(colors) {
+  if(playing) {
+    playing = !playing;
+    $endGame.css({display: 'block'});
+    $buttons.css({display: 'none'});
+    $inGame.css({display: 'none'});
+  } else {
+    playing = !playing;
+    $endGame.css({display: 'none'});
+    $buttons.css({display: 'flex'});
+    $inGame.css({display: 'block'});
+    start(colors);
+  }
+}
 
 $(document).ready(function() {
   ref.on('value', function(colorsData) {
     const colors = Object.values(colorsData.val());
     $color1.on('click', (e) => selectColor(e, colors));
     $color2.on('click', (e) => selectColor(e, colors));
+    $restart.on('click', () => toggleEndGame(colors));
     start(colors);
   })
 });
-
-// boosch nudus
